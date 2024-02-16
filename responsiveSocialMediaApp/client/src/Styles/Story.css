@@ -1,0 +1,46 @@
+
+.story-page-container{
+
+    background-color: rgba(0, 0, 0, 0.948);
+
+    position: absolute;
+
+    right: 0.9%;
+
+   gap: 20rem;
+
+  height: 100vh;
+
+  overflow-y: scroll;
+
+  display: flex;
+
+  align-items: center;
+
+ 
+
+
+  width: 100vw;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+.register-main-container {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translate(-50%);
+
+    display: flex;
+
+    background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+    background-size: cover;
+
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100vw;
+
+    min-height: 100vh;
+
+
+
+}
+
+
+
+
+
+.register-main-container .registermain-child {
+
+    display: flex;
+
+    min-width: 40rem;
+
+    max-width: 100rem;
+
+    border: solid 2px red;
+
+
+
+
+}
+
+
+
+form {
+
+    
+    width: 40rem;
+
+    aspect-ratio: 1/1.5;
+
+    display: flex;
+
+    text-align: center;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color:white ;
+
+    flex-direction: column;
+
+    font-size: 1.7rem;
+
+    gap: 1rem;
+
+}
+
+
+form input {
+
+    width: 55%;
+
+    height: 2.4rem;
+
+
+}
+
+
+img {
+
+    width: 40rem;
+
+
+
+    aspect-ratio: 1/1.5;
+
+}
+
+
+
+
+
+@media only screen and (max-width:540px) and (min-width: 250px) {
+
+
+    img {
+
+        display: none;
+
+    }
+
+    .register-main-container{
+
+        width: 100vw;
+
+        align-items: center;
+
+        display: flex;
+
+        text-align: center;
+
+        justify-content: center;
+
+    }
+
+
+    .register-main-container .registermain-child {
+
+        height: 100vh;
+
+        width: 100%;
+
+
+
+
+    }
+
+
+    form{
+
+
+        width: 100%;
+
+    }
+
+
+}

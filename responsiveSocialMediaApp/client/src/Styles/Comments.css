@@ -1,0 +1,204 @@
+.comments-section {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    word-wrap: break-word;
+
+    border: solid 2px green;
+
+    padding: 2px;
+
+    overflow-y: scroll;
+
+    align-items: center;
+
+    text-align: center;
+
+
+    width: 96%;
+
+
+}
+
+
+
+
+
+.comments-container {
+
+    display: flex;
+
+    flex-direction: row;
+
+    margin: 20px;
+
+    border: solid 2px blue;
+
+
+ 
+    flex-wrap: wrap;
+
+    word-wrap: break-word;
+
+    overflow-x: scroll;
+
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: baseline;
+
+    width: 100%;
+
+    min-height: 80%;
+
+
+
+}
+
+
+.comment-card {
+
+
+    display: flex;
+
+    flex-direction: row;
+
+
+
+    /*
+    
+    
+    
+        display: grid;
+    
+        grid-template-columns: 1fr 1fr 1fr;
+    
+        grid-template-rows: repeat(auto-fit);
+    
+        height: auto;
+    
+    
+        width: 100%;
+    
+        padding:0, 4rem;
+        
+        flex-wrap: wrap;
+    
+        gap: 4px;
+    
+        justify-content: center;
+    
+    
+    */
+
+
+
+}
+
+
+
+
+.comment-card p:nth-child(2) {
+
+    color: brown;
+
+    font-size: 2rem;
+
+    font-weight: 600;
+
+    grid-row-start: 1;
+
+    grid-column-start: 2;
+
+    justify-self: center;
+
+
+
+}
+
+
+.comment-card form {
+
+
+    background-color: blueviolet;
+
+    display: flex;
+
+    grid-row-start: 2;
+
+    align-items: center;
+
+    text-align: center;
+
+    justify-self: center;
+
+}
+
+
+.comment-card>.btn {
+
+    justify-self: center;
+
+    font-size: 1.50rem;
+
+    grid-row-start: 4;
+
+
+}
+
+
+.comment-card p {
+
+    color: rgb(4, 4, 4);
+
+    font-size: 1.5rem;
+
+    font-weight: 600;
+
+    align-items: center;
+
+    grid-row-start: 3;
+
+    grid-column: span 3;
+
+
+
+
+}
+
+
+
+
+
+.comment-card img:nth-child(1) {
+
+    border: solid 2px red;
+
+    border-radius: 50%;
+
+    width: 4rem;
+
+    justify-self: center;
+
+
+
+}
+
+
+.comment-card .reply-btn {
+
+    grid-row-start: 4;
+    grid-column-start: 3;
+
+    justify-self: center;
+
+    align-self: center;
+
+}

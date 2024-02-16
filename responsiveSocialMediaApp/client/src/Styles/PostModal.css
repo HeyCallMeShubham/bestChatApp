@@ -1,0 +1,88 @@
+.modal-overlay-container {
+
+    position: relative;
+
+    top: 50%;
+
+    border: solid 2px red;
+
+    left: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow-y: scroll;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    align-items: center;
+
+    max-width: 70rem;
+
+    min-width: 10rem;
+
+    height: 100%;
+
+
+}
+
+
+
+
+.modal-content-container {
+
+    border: solid 2px rgb(147, 47, 255);
+
+    width: 100%;
+
+    align-items: center;
+
+    display: flex;
+
+    flex-direction: column;
+ 
+    height: 35rem;
+
+    text-align: center;
+
+
+}
+
+
+.modal-content-container>img {
+
+    width: 95%;
+
+    height: 100%;
+
+}
+
+
+
+
+.post-caption-container {
+
+    min-height: 3rem;
+
+    max-width:30rem;
+
+    max-height: auto;
+
+    word-wrap: break-word;
+    
+    text-align: center;
+
+    margin-top: 10px;
+
+    align-self: center;
+ 
+    padding: 0 10px;
+
+    border: solid 1px green;
+
+    
+
+}

@@ -1,0 +1,57 @@
+
+.wrapper{
+
+
+    display: flex;
+
+    align-content: end;
+
+    text-align: center;
+
+    align-items: center;
+
+     width: 98%;
+
+    height: 6rem;
+
+    gap: 1rem;
+
+    padding:5px 5px ;
+
+    background: #086cd0 
+
+
+}
+
+ 
+
+.wrapper .user-profile-picture{
+
+    border: solid 3px red;
+
+    border-radius: 50%;
+
+    background: #f5f6f7;
+
+    width:4.5rem;
+
+    height:4.5rem;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

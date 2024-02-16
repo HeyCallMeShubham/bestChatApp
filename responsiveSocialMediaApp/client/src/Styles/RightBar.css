@@ -1,0 +1,39 @@
+
+.rightBar-main-component{
+
+
+    align-items: center;
+
+    text-align: center;
+
+    justify-content: center;
+
+    border-left: solid 1px black;
+
+
+    
+
+    min-height: 100vh;
+
+
+}
+
+
+
+
+@media only screen and (max-width:740px) and (min-width: 250px){
+
+    .rightBar-main-component{
+
+        grid-row-start: 2;
+
+        display: none;
+
+    }
+
+
+}
+
+
+
+

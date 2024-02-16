@@ -1,0 +1,351 @@
+.main-about-page-container {
+
+    min-height: 100vh;
+
+    max-height: 100%;
+
+    display: grid;
+
+    grid-template-rows: 32rem 1fr;
+
+    overflow-y: scroll;
+
+
+
+
+}
+
+
+.userBio-userName-followers-etc-container {
+
+    grid-row-start: 1;
+
+    grid-row-end: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+
+
+    /*
+    
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    grid-template-columns: 26rem 1fr 1fr;
+
+    */
+
+
+    align-items: center;
+
+    text-align: center;
+
+    word-wrap: break-word;
+
+
+
+    width: 100%;
+
+    height: 100%;
+
+    max-height: auto;
+
+
+
+    /*
+    
+    display: flex;
+
+text-align: center;
+
+align-items: center;
+
+justify-content: space-between;
+
+flex-wrap: wrap;
+
+min-width: 100%;
+
+height: 100%;
+
+
+padding: 1.5rem;
+
+
+
+*/
+
+
+}
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .profile-image-container {
+
+    border: solid 2px green;
+
+    border-radius: 50%;
+
+    text-align: center;
+
+    align-items: center;
+
+    align-self: center;
+
+    justify-self: center;
+
+
+    width: 18rem;
+
+    height: 18rem;
+
+}
+
+
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .profile-image-container .profileImage {
+
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    border-radius: 50%;
+
+}
+
+
+
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .texts-container {
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    text-align: left;
+
+    gap: 1rem;
+
+    font-size: 2rem;
+
+
+
+}
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .texts-container .userName-and-EditSetting-Btn-container {
+
+
+    display: flex;
+
+
+    text-align: center;
+
+    flex-wrap: wrap;
+
+    gap: 2rem;
+
+    align-items: center;
+
+
+}
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .texts-container .userName-and-EditSetting-Btn-container .Edit-Profile-btn {
+
+
+    height: 3rem;
+
+    font-size: 80%;
+
+    padding: 2px 4px;
+
+    background-color: rgb(216, 216, 216);
+
+    outline: none;
+
+    border: solid 1px rgb(213, 213, 213);
+
+
+}
+
+
+
+
+.main-about-page-container .userBio-userName-followers-etc-container .texts-container ul {
+
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    text-align: left;
+
+    gap: 1.4rem;
+
+    padding: 0;
+
+    margin: 0;
+
+
+}
+
+
+
+
+
+
+
+
+.main-about-page-container .user-content-container {
+
+    display: grid;
+
+
+    grid-template-columns: repeat(auto-fit, 28rem);
+
+
+    grid-auto-rows: 32rem;
+
+
+    border: solid 8px black;
+
+
+    justify-content: center;
+
+
+    margin: 2rem;
+
+
+    padding-top: 4rem;
+
+
+    height: 100%;
+
+
+    width: auto;
+    
+
+    max-height: auto;
+
+
+    gap: 10px;
+
+}
+
+
+
+.main-about-page-container .user-content-container .postcard {
+
+    background-color: blanchedalmond;
+
+    border: solid 3px blanchedalmond;
+
+    border-radius: 1rem;
+
+}
+
+
+
+
+
+.main-about-page-container .user-content-container .postcard img {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:540px) and (min-width: 250px) {
+
+    .main-about-page-container {
+
+        border: solid 2px red;
+
+
+
+    }
+
+    .main-about-page-container .userBio-userName-followers-etc-container {
+
+        display: flex;
+
+        text-align: center;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-direction: column;
+
+
+    }
+
+
+
+    .main-about-page-container .userBio-userName-followers-etc-container .profile-image-container {
+
+
+        width: 10rem;
+
+        height: 10rem;
+
+        margin-bottom: 2rem;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    .main-about-page-container .userBio-userName-followers-etc-container .texts-container {
+
+
+        text-align: center;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-direction: column;
+
+        font-size: 1.5rem;
+
+        font-weight: bold;
+
+
+    }
+
+
+    .main-about-page-container .userBio-userName-followers-etc-container .texts-container ul {}
+
+
+
+}

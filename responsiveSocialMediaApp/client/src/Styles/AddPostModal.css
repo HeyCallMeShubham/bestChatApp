@@ -1,0 +1,133 @@
+
+
+.add-post-modal{
+
+
+    border: solid 2px red;
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 70vh;
+
+    width: 100rem;
+
+    position:absolute;
+
+    z-index: 1;
+
+    display: flex;
+
+    top: 50%;
+
+    right: -90%;
+
+    transform: translate(80%, -50%);
+
+
+
+}
+
+
+.add-post-modal .header-box{
+
+
+
+    width: 100%;
+
+    height: 5rem;
+
+    font-size:3rem;
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    padding: 0 14px;
+
+    justify-content: space-between;
+
+    background-color: aqua;
+
+
+
+}
+
+
+
+
+
+.add-post-modal .choose-file-container{
+  
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.selected-content-container{
+
+    border: solid 4px rgb(38, 0, 128);
+
+    width: 50%;
+
+}
+
+
+.selected-content-container .selected-content-for-post{
+
+ 
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+ .content-add-info-caption{
+
+   background-color: brown;
+
+   width: 50%;
+
+   height: 100%;
+
+}
+
+
+.caption-input{
+
+width: 100%;
+
+font-size: 2rem;
+
+height: 28rem;
+
+text-align: left;
+
+align-items: center;
+
+padding:6px 16px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

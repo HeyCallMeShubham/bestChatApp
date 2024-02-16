@@ -1,0 +1,69 @@
+
+
+
+.story-card{
+
+
+
+
+    min-width: 40rem;
+
+    min-height: 70rem;
+
+    position: relative;
+
+
+}
+
+.story-content{
+    
+    height: 100%;
+    
+    width: 100%;
+    
+}
+
+
+
+
+.story-card > .story-by-user-bar{
+
+   position: absolute;
+
+  display: flex;
+
+
+  font-size: 2rem;
+
+  height: 5rem;
+
+  align-items: center;
+
+  justify-content: space-around;
+
+  padding: 0 1rem;
+
+   text-align: center;
+
+  width: 100%;
+
+
+}
+
+
+
+
+.story-card > .story-by-user-bar .profile-image{
+
+    border-radius: 50%;
+
+height: 4rem;
+
+width: 4rem;
+
+
+}
+
+
+
+

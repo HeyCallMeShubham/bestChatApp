@@ -1,0 +1,147 @@
+
+
+/*Comments-container*/
+
+
+.comments-container{
+  
+    font-size: 4rem;
+
+    border: solid 2px green;
+
+    width: 100%;
+
+    height: 100%;
+
+    margin: 3rem auto;
+    
+    align-items: flex-start;
+
+    text-align: left;
+
+    overflow-y: scroll;
+
+}
+
+
+
+/*Comment Container*/
+
+
+
+.comment_container{
+
+   position: relative;
+
+   display: flex;
+
+   background-color: aquamarine;
+
+   flex-direction: column;
+
+   width: 60%;
+
+   height: auto;
+
+   flex-wrap: wrap;
+
+}
+
+
+
+
+.comment_container::before{
+
+   content:"";
+
+   position:absolute;
+
+   min-height: 100%;
+
+   width: 1px;
+
+   left: -10px;
+
+}
+
+.comment_container:not(:first-child){
+ 
+   margin-left:3rem;
+
+   margin-top: 1rem;
+
+}
+
+
+
+.comment_card{
+
+ padding: 2rem;
+
+ display: flex;
+
+ flex-direction: column;
+
+ flex-wrap: wrap;
+
+ height: auto;
+ 
+ background-color: rgb(209, 209, 209);
+ 
+ border: 1px solid rgba(0,0,0,0.3);
+ 
+ width: 40rem;
+
+ box-shadow: 0 0 50px rgba(0,0,0,0.1);
+ 
+}
+
+
+
+.comment_card h3, 
+.comment_card p{
+
+    margin-bottom: 1.6rem;
+    
+}
+
+
+
+.comment_card_footer{
+    
+    display: flex;
+    
+    font-size: .85rem;
+
+    opacity: .6;
+
+    gap: 30px;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+}
+
+
+.show-replies{
+
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

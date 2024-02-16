@@ -1,0 +1,187 @@
+/* InstagramPost.css */
+.instagram-post {
+
+  background-color: rgba(255, 255, 255, 0.9);
+
+  margin: 6rem;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  min-width: 28rem;
+
+  max-width: 34rem;
+
+  box-shadow: 0 18px 22px 7px rgba(0, 0, 0, 0.50);
+
+}
+
+
+.post-header {
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 10px;
+
+  border-bottom: 1px solid #bbbbbb;
+
+}
+
+.user-avatar {
+
+  width: 4rem;
+
+  height: 4rem;
+
+  border-radius: 50%;
+
+  margin-right: 10px;
+
+}
+
+.username {
+
+  font-size: 100%;
+
+  font-weight: bold;
+}
+
+.post-image {
+
+
+  height: 34rem;
+
+}
+
+.post-image img {
+  width: 100%;
+   height: 100%;
+}
+
+.post-content {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  /* Set a background color for the body */
+  color: #333;
+}
+
+.comments {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+
+span:hover{
+
+cursor: pointer;
+
+
+}
+
+
+
+
+@media only screen and (max-width:740px) and (min-width: 300px) {
+
+
+
+
+  .instagram-post {
+
+    background-color: rgba(255, 255, 255, 0.9);
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    grid-column-start: 2;
+
+    grid-column-end: 9;
+
+
+
+  }
+
+
+  .post-header {
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #424242;
+  }
+
+
+  .user-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+  }
+
+  .username {
+
+    font-weight: bold;
+  }
+
+  .post-image img {
+    width: 100%;
+
+    height:100%;
+  
+  }
+
+  .post-content {
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fafafa;
+    color: #333;
+  }
+
+  .comments {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .comment-username {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+
+
+
+}
