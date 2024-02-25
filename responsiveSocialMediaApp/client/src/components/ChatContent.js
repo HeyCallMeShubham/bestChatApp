@@ -26,6 +26,7 @@ import { IoIosArrowDropleft } from "react-icons/io";
 import useSocket from "../hooks/useSocketFunction";
 
 import Peer from "simple-peer";
+import ConversationText from "./ConversationText";
 
 
 {/*
@@ -126,6 +127,7 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
         });
 
+        console.log(data, 'conversations')
 
         setConversations(data);
 
@@ -156,11 +158,11 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
     const msgdata = {
 
-      senderId:currentUser._id,
+      senderId: currentUser._id,
 
-      chatRoomId:chatRoomId,
-      
-      text:message
+      chatRoomId: chatRoomId,
+
+      text: message
 
     }
 
@@ -179,7 +181,7 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
       socket.emit('send-message', msgdata)
 
-     // setConversations([...conversations, msgdata])
+      // setConversations([...conversations, msgdata])
 
 
     } catch (err) {
@@ -202,10 +204,10 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
     socket.on('newmessage', (data) => {
 
-      const newMessage = data 
+      const newMessage = data
 
-     setConversations([...conversations, newMessage]);
-  
+      setConversations([...conversations, newMessage]);
+
     });
 
 
@@ -271,7 +273,7 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
     socket.on("incoming:call", async (data) => {
 
-      const { offer,from } = data
+      const { offer, from } = data
 
       await peerConnection.setRemoteDescription(new RTCSessionDescription(offer))
 
@@ -279,8 +281,8 @@ const ChatContent = ({ selectedUser, currentUser }) => {
       const answer = await peerConnection.createAnswer();
 
 
-      socket.emit("answer:call", {to:from, answer:answer});
-  
+      socket.emit("answer:call", { to: from, answer: answer });
+
 
     });
 
@@ -291,34 +293,34 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
 
 
-  useEffect(() =>{
-
-    
-    
-    socket.on('call:answer', async(data) =>{
-      
-      const {answer, from} = data
+  useEffect(() => {
 
 
-  
-       await peerConnection.setLocalDescription(answer);
+
+    socket.on('call:answer', async (data) => {
+
+      const { answer, from } = data
 
 
-        navigator.mediaDevices.getUserMedia({
 
-          video:true
+      await peerConnection.setLocalDescription(answer);
 
-        }).then((stream) =>{
-       
-          stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
 
-          
-          setMyStream(stream);
+      navigator.mediaDevices.getUserMedia({
 
-          
-        })
+        video: true
 
- 
+      }).then((stream) => {
+
+        stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+
+
+        setMyStream(stream);
+
+
+      })
+
+
     })
 
 
@@ -376,19 +378,8 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
 
                       <div className="d-flex flex-row justify-content-start" style={{ alignItems: "center" }}>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                          alt="avatar 1"
-                          style={{ width: "45px", height: "100%" }}
-                        />
-                        <div>
-                          <p
-                            className="small p-2 ms-3 mb-1 rounded-3"
-                            style={{ backgroundColor: "#f5f6f7" }}
-                          >
-                            {conversation.text}
-                          </p>
-                        </div>
+
+                        <ConversationText senderId={conversation?.senderId} conversation={conversation} />
 
                       </div>
 
@@ -396,6 +387,13 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
                       <div className="d-flex flex-row justify-content-end  mb-4 pt-1" style={{ alignItems: "center" }}>
 
+                        <ConversationText senderId={conversation?.senderId} conversation={conversation} />
+
+
+                         {/*
+                         
+
+                         
                         <div>
 
                           <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
@@ -412,6 +410,10 @@ const ChatContent = ({ selectedUser, currentUser }) => {
                           alt="avatar 1"
                           style={{ width: "45px", height: "100%" }}
                         />
+                         
+                         */}
+                    
+
 
                       </div>
 
