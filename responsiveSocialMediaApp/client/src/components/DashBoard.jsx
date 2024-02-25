@@ -9,19 +9,29 @@ import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
 import { FaPlus } from "react-icons/fa";
 import AddStory from './storyComponents/AddStory.js'
+import useSocket from '../hooks/useSocketFunction.js'
 const DashBoard = () => {
 
   const currentUser = useSelector((state) => state.helloSocialUser.currentUser)
 
 
+  const socket = useSocket();
+  
   const [stories, setStories] = useState([])
-
+  
   const [posts, setPosts] = useState([])
-
+  
   const fileInputRef = useRef(null)
-
-
+  
+  
   console.log(posts, 'setPosstststtss')
+  
+  
+  
+  
+   
+
+
 
 
 

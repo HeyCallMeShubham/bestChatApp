@@ -14,6 +14,9 @@ import Register from './pages/Register.js';
 import Login from './pages/Login.js';
 import ProtectedRoute from './components/ProtectedRoutes.js';
 import Story from './pages/Story.js';
+import WebrtcRoom from './pages/WebrtcRoom.js';
+import RoomWebrtc from './pages/RoomWebrtc.js';
+
 
 
 
@@ -41,6 +44,12 @@ function App() {
           <Route path='/aboutuser/:userId' element={<AboutProfile/>}/>
 
           <Route path='/stories/:profileName/:storyId' element={<Story />}/>
+
+          <Route path='/room/:roomid' element={<RoomWebrtc />}/>
+
+          <Route path='/registerroom' element={<WebrtcRoom />}/>
+
+
       
 
           </Route>

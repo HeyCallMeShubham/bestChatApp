@@ -10,6 +10,8 @@ const app = express()
 
 import mongoose, { Callback } from "mongoose"
 
+import { Server, Socket } from 'socket.io'
+
 import multer from "multer"
 
 import dotenv from "dotenv"
@@ -27,18 +29,16 @@ import postRouter from "./routes/PostRoute";
 import { isObjectLiteralElementLike } from "typescript";
 import storyRouter from "./routes/storyRoutes";
 import commentRouter from "./routes/CommentRoutes";
+import MessagesModel from "./models/realTimeChatModels/messagesModel";
+import MessageRouter from "./routes/MessageRouter";
+import ChatRoomRouter from "./routes/ChatRoomRoutes";
 
 
 mongoose.connect("mongodb+srv://shubham:mylife@cluster0.natwega.mongodb.net/")
 
 
 
-
-
-
-dotenv.config()
-
-
+dotenv.config();
 
 
 
@@ -54,7 +54,8 @@ app.use(cors({
 
 
 
-app.use(bodyParser.json({limit:"50mb"}));
+
+app.use(bodyParser.json({ limit: "50mb" }));
 
 app.use(cookieParser());
 
@@ -62,325 +63,239 @@ app.use("/api/v1/hellosocial/user", userRouter);
 app.use("/api/v1/hellosocial/posts", postRouter);
 app.use("/api/v1/hellosocial/story", storyRouter);
 app.use("/api/v1/hellosocial/comments", commentRouter);
+app.use("/api/v1/chatroom", ChatRoomRouter);
+app.use("/api/v1/messages", MessageRouter);
 
-app.use(bodyParser.urlencoded({limit:"50mb",extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 
 
 
+const expresServer = app.listen(Number(2024), () => {
+    console.log(`Port is listening on ${2024}`);
+});
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-app.listen(2024, () => {
-
-    console.log('app is listening on 2024')
-    
-    
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/*
-
-
-
-const verify = (req:any, res:any) => {
-
-
-    try {
-
-        const accessToken = req.cookies.helloSocialAppAccessToken
-
-
-        if (!accessToken) {
-
-            const refreshToken = req.cookies.helloSocialAppRefreshToken
-
-            if (refreshToken) {
-                
-                
-
-                const secretKey: string = "motabhaibhaibhai"
-                type payload = {
-                    
-                    userId: any,
-                    username: string,
-                    email: string
-                    
-                }
-
-                jwt.verify(refreshToken, secretKey, (err: any, decoded: any) => {
-
-                    const jwtPayload: payload = {
-
-                        userId: decoded.userId,
-                        username: decoded.username,
-                        email: decoded.email
-
-                    };
-
-
-                    const accessToken = jwt.sign(jwtPayload, secretKey, { expiresIn: '1h' });
-
-                    
-                    
-                    type httpOptions = {
-                        
-                        maxAge: number,
-                        httpOnly: boolean,
-                        secure: boolean,
-                        
-                    };
-                    
-                    
-                    
-                    const httpOnlyOption: httpOptions = {
-                        
-                        maxAge: 36000000,
-                        httpOnly: false,
-                        secure: false,
-                        
-                    };
-                    
-                    
-                    res.cookie("helloSocialAppAccessToken", accessToken, httpOnlyOption);
-                    
-                    
-                })
-
-
-            } else {
-                
-                console.log(accessToken, 'accesstoken')
-                
-            }
-
-        } else {
-
-            
-            console.log('valid user')
-            
-            //  res.status(200).json({message:"validToken"})
-
-
-        }
-
-    } catch (err) {
-
-        console.log(err)
-        
+const io = new Server(expresServer, {
+    cors: {
+        origin: "http://localhost:3000"
     }
-    
-    
-    
+});
+
+
+
+interface User {
+    userId: string;
+    socketId: string;
+    email?: string,
+
 }
 
 
-app.get('/helllo', verify, (req, res) =>{
-    
-    console.log('hhheehheehhehhehe')
-    
-    
+
+const activeUsers: User[] = [];
+
+
+const emailToSocket = new Map();
+
+
+const socketToEmail = new Map();
+
+
+
+const activeRoom = new Map()
+
+
+io.on("connection", (socket: any) => {
+
+    /// this join when user is active
+
+
+    socket.on("join", (data: any) => {
+
+        console.log(data, 'email')
+
+        emailToSocket.set(data.email, socket.id);
+        socketToEmail.set(data.socketId, data.email);
+
+        socket.join(data.email);
+
+        if (!activeUsers.some((user) => user.userId === data._id)) {
+
+            activeUsers.push({
+
+                userId: data._id,
+                socketId: socket.id,
+                email: data.email,
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+
+
+
+
+    socket.on('active:room', (data: any) => {
+
+        console.log(data, 'actveroom')
+
+        socket.join(data.chatRoomId)
+
+        activeRoom.set(data.chatRoomId, socket.id);
+
+    });
+
+
+
+
+    io.emit('active:users', activeUsers);
+
+
+    interface sendMessageObj {
+
+        chatRoomId: string,
+        senderId: string,
+        text: string
+
+    }
+
+
+
+
+    socket.on('send-message', async (data: sendMessageObj) => {
+
+        const chatRoom = activeRoom.get(data.chatRoomId);
+
+        const message = new MessagesModel(data);
+
+        
+
+        if (message) {
+
+            message.save().then(() => {
+
+                io.to(data.chatRoomId).emit('newmessage', message);
+
+            }).catch((err) => {
+
+                console.log(err)
+
+            })
+
+        }
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    interface makingCall {
+
+        offer: object,
+
+        to: string,
+
+        callingBy: string,
+
+        chatRoomId: string
+
+    }
+
+
+    socket.on('making:call', (data: makingCall) => {
+
+        console.log(data, 'dd')
+
+      const {offer, to, callingBy, chatRoomId} = data
+
+      io.to(to).emit("incoming:call", {offer, from:callingBy})
+
+
+    });
+
+
+
+
+
+
+      interface answerDataI {
+
+        to:string,
+        answer:object,
+        answerBy:string
+
+
+      }
+
+
+   socket.on('answer:call', (data:answerDataI) =>{
+
+    const {to, answer ,answerBy} = data
+        
+    io.to(to).emit("call:answer", {from:answerBy, answer})
+ 
+
+
+   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
-
-
-*/}
-
-
-
-{/*
-
-    interface CustomRequest extends Request {
-     
-        
-        email?:string
-        
-    }
-    
-    
-       
-       const verifyUser = (req:CustomRequest, res:Response, next:NextFunction) =>{
-        
-           
-           const accessToken = req.cookies.helloSocialAppAccessToken;
-        
-           
-           if(!accessToken){
-               
-               
-               if(renewToken(req, res, next)){
-     
-                   next()
-                   
-                }
-                
-                
-            }else{
-            
-            const secretKey: string = "motabhaibhaibhai"
-    
-            jwt.verify(accessToken, secretKey, (err:any, decoded:any) =>{
-    
-                if(err){
-    
-                    console.log('invalid user', err)
-                    
-                    return next(ErrorHandler(401, 'invalid accessToken'))
-                    
-                }else{
-                    
-                    console.log(decoded, 'accessToken');
-                    
-                    req.email = decoded.email
-                    
-                    next();
-                    
-                }
-    
-           })
-           
-        }
-        
-    };
-    
-    
-    
-    
-    
-    
-    const renewToken = (req:CustomRequest, res:Response, next:NextFunction) =>{
-        
-        
-        const refreshToken = req.cookies.helloSocialAppRefreshToken
-    
-    
-        let exists = false
-        
-        
-        if(!refreshToken){
-            
-            
-            return next(ErrorHandler(401, "UnAuthorisedUser"))
-            
-            
-        }else{
-            
-            
-            const secretKey: string = "motabhaibhaibhai"
-            
-            
-            jwt.verify(refreshToken, secretKey, (err:any, decoded:any) =>{
-                
-                
-                if(err){
-                    
-                    
-                    console.log('invalid user', err);
-                    
-                    
-                    return next(ErrorHandler(401, 'invalid refreshToken'))
-                    
-                    
-                }else{
-                    
-                    
-                    const secretKey: string = "motabhaibhaibhai"
-                    
-                    
-                    const accessToken = jwt.sign({email:decoded.email}, secretKey, { expiresIn: '1h' });
-                    
-                    
-                    
-                    type httpOptions = {
-                        
-                        maxAge: number,
-                        httpOnly: boolean,
-                        secure: boolean,
-                        
-                    };
-    
-    
-    
-                    const httpOnlyOption: httpOptions = {
-    
-                        maxAge: 3600000000,
-                        httpOnly: true,
-                        secure: false,
-                        
-                    };
-                    
-                    
-                    
-                    res.cookie("helloSocialAppAccessToken", accessToken, httpOnlyOption);
-                    
-                    exists = true
-    
-                }
-                
-           })
-    
-        }
-    
-        return exists
-        
-    }
-    
-    
-    
-    */}
