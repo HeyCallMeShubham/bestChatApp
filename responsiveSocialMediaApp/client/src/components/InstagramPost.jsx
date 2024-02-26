@@ -33,7 +33,7 @@ const InstagramPost = ({ post, currentUser }) => {
 
         })
 
-    console.log(data, 'dddddddddd')
+
 
         setCurrentPost(data);
 
@@ -66,7 +66,6 @@ const InstagramPost = ({ post, currentUser }) => {
    
          });
 
-         console.log(data, 'likelike')
 
          setPostLiked(data.data);
 

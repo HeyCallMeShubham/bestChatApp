@@ -14,8 +14,7 @@ const ConversationText = ({ senderId, conversation, currentUser }) => {
 
                 const { data } = await axios.get(`http://localhost:2024/api/v1/hellosocial/user/aboutuser/${senderId}`)
 
-                console.log(data.userData, 'datatatattata')
-
+     
                 setUser(data.userData)
 
             } catch (err) {

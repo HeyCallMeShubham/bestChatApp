@@ -4,35 +4,47 @@ import cookieParser from "cookie-parser"
 
 import bodyParser from "body-parser";
 
-import cors from 'cors'
+import cors from "cors";
 
-const app = express()
+const app = express();
 
-import mongoose, { Callback } from "mongoose"
+import mongoose, { Callback } from "mongoose";
 
-import { Server, Socket } from 'socket.io'
+import { Server, Socket } from "socket.io";
 
-import multer from "multer"
+import multer from "multer";
 
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
+import UserModel from "./models/User";
 
-import UserModel from "./models/User"
 import { tryCatch } from "./utils/tryCatch";
+
 import ErrorHandler from "./utils/ErrorHandler"
+
 import userRouter from "./routes/UserRoutes";
+
 import { JsonWebTokenError } from "jsonwebtoken";
+
 import verifyToken from "./utils/userVerify";
+
 import postRouter from "./routes/PostRoute";
+
 import { isObjectLiteralElementLike } from "typescript";
+
 import storyRouter from "./routes/storyRoutes";
+
 import commentRouter from "./routes/CommentRoutes";
+
 import MessagesModel from "./models/realTimeChatModels/messagesModel";
+
 import MessageRouter from "./routes/MessageRouter";
+
 import ChatRoomRouter from "./routes/ChatRoomRoutes";
 
+import path from "path";
 
 mongoose.connect("mongodb+srv://shubham:mylife@cluster0.natwega.mongodb.net/")
 
@@ -60,13 +72,30 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
 
 app.use("/api/v1/hellosocial/user", userRouter);
+
 app.use("/api/v1/hellosocial/posts", postRouter);
+
 app.use("/api/v1/hellosocial/story", storyRouter);
+
 app.use("/api/v1/hellosocial/comments", commentRouter);
+
 app.use("/api/v1/chatroom", ChatRoomRouter);
+
 app.use("/api/v1/messages", MessageRouter);
 
+
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
+app.use(express.static(path.join(__dirname, "../../client/build")));
+
+app.get("*", (req:Request, res:Response) =>{
+
+  res.sendFile(path.join(__dirname, './client/build/index.html'));    
+
+});
+
+
+
 
 
 

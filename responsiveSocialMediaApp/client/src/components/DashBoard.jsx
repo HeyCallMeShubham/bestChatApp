@@ -48,7 +48,7 @@ const DashBoard = () => {
 
         });
 
-        console.log(res.data, 'stories')
+
 
 
 
@@ -111,7 +111,7 @@ const DashBoard = () => {
 
   const deleteExpiredStory = async (story) => {
 
-    console.log(story?._id, 'hhhhd')
+
 
     try {
 

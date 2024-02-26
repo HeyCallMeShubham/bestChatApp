@@ -97,7 +97,6 @@ const AboutProfile = () => {
 
         })
 
-        console.log(JSON.parse(posts.data[0].postContent))
 
         setUserPosts(posts.data);
 

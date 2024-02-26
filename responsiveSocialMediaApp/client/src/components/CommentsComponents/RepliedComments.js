@@ -34,7 +34,7 @@ const RepliedComments = ({ postId, commentId, currentUser }) => {
                 });
 
 
-                console.log(res, 'repliedComments');
+        
 
                 setRepliedComments(res.data)
 

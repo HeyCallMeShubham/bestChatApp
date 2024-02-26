@@ -33,7 +33,7 @@ const PostModal = ({}) => {
 
         })
 
-        console.log(data, 'currentPost')
+
 
         setCurrentPost(data)
  

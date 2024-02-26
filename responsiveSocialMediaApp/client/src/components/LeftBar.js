@@ -156,7 +156,7 @@ const LeftBar = () => {
 
       setSearchResults([...res.data])
 
-     console.log(res, 'heleelldee')
+
        
 
     }catch(err){

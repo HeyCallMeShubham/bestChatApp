@@ -119,7 +119,6 @@ const PostDetails = () => {
 
 
     
-    console.log('postId', currentPost)
     
     const currentPoss = posts.filter((post) => post._id === postId)
 

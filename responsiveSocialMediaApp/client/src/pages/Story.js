@@ -29,7 +29,6 @@ const Story = () => {
 
         });
 
-        console.log(res?.data, 'stories')
 
         setStories(res?.data)
    

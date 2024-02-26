@@ -54,8 +54,6 @@ export default function Comment({ postId }) {
 
 
 
-        console.log("comments", res.data);
-
         setPostComments(res.data);
 
 
@@ -96,7 +94,7 @@ export default function Comment({ postId }) {
 
       setPostComments([...postComments, res.data ])
 
-      console.log(res.data, 'response comment added');
+   
 
 
     } catch (err) {

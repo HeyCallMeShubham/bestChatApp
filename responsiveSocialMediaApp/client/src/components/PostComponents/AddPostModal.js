@@ -16,7 +16,6 @@ const AddPostModal = ({currentUser, setShowPostModal}) => {
   const [postCaption, setPostCaption] = useState("");
 
 
- console.log(postCaption, 'postcaption')
 
 
   const converToBase64 = (file) =>{
