@@ -1,0 +1,17 @@
+{
+  "name": "responsivesocialmediaapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client":"cd client && npm start",
+    "backend":"cd backend && npm run dev",
+    "start":"concurrently \"npm run backend\" \"npm run client\""
+
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -15,7 +15,7 @@ import { isNamedExportBindings } from "typescript"
 
 export const Register = tryCatch(async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log(req.body, 'req.body')
+
 
     try {
 
@@ -219,7 +219,7 @@ export const Login = tryCatch(async (req: Request, res: Response, next: NextFunc
 
 export const getUserById = tryCatch(async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log(req.params)
+
 
     const userData = await userModel.findOne({ _id: req.params.userId })
 
@@ -241,7 +241,6 @@ export const getUserById = tryCatch(async (req: Request, res: Response, next: Ne
 
 export const searchUsers = tryCatch(async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log(req.query)
 
     const usernames = req.query.username || ""
 
@@ -272,7 +271,6 @@ export const searchUsers = tryCatch(async (req: Request, res: Response, next: Ne
 
 export const updateUserFollowers = tryCatch(async (req: Request, res: Response, next: NextFunction) => {
 
-    console.log(req.body.userId)
 
     const user = await userModel.findOne({ _id: req.params.userId })
 

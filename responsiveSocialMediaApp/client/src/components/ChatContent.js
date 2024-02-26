@@ -75,6 +75,13 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
 
 
+
+
+
+
+
+
+
   useEffect(() => {
 
 
@@ -120,6 +127,7 @@ const ChatContent = ({ selectedUser, currentUser }) => {
       try {
 
 
+
         const { data } = await axios.get(`http://localhost:2024/api/v1/messages/fetchconversation/${chatRoomId}`, {
 
           method: "GET",
@@ -127,9 +135,11 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
         });
 
-        console.log(data, 'conversations')
+
 
         setConversations(data);
+
+
 
       } catch (err) {
 
@@ -142,6 +152,7 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
 
     getUsersConversations();
+
 
 
   }, [chatRoomId]);
@@ -179,9 +190,13 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
       });
 
-      socket.emit('send-message', msgdata)
 
-      // setConversations([...conversations, msgdata])
+
+      socket.emit('send-message', msgdata);
+
+
+
+      setConversations([...conversations, msgdata]);
 
 
     } catch (err) {
@@ -204,9 +219,12 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
     socket.on('newmessage', (data) => {
 
+
       const newMessage = data
 
+
       setConversations([...conversations, newMessage]);
+
 
     });
 
@@ -377,48 +395,26 @@ const ChatContent = ({ selectedUser, currentUser }) => {
                     {conversation?.senderId === currentUser?._id ? (
 
 
+
                       <div className="d-flex flex-row justify-content-start" style={{ alignItems: "center" }}>
 
-                        <ConversationText senderId={conversation?.senderId} conversation={conversation} />
+                        <ConversationText senderId={conversation?.senderId} conversation={conversation} currentUser={currentUser?._id} />
 
                       </div>
 
                     ) : (
 
+
+
                       <div className="d-flex flex-row justify-content-end  mb-4 pt-1" style={{ alignItems: "center" }}>
 
                         <ConversationText senderId={conversation?.senderId} conversation={conversation} />
 
-
-                         {/*
-                         
-
-                         
-                        <div>
-
-                          <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
-                            {conversation?.text}
-                          </p>
-                          <p className="small ms-3 mb-3 rounded-3 text-muted">
-                            9:90
-                          </p>
-
-                        </div>
-
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
-                          alt="avatar 1"
-                          style={{ width: "45px", height: "100%" }}
-                        />
-                         
-                         */}
-                    
-
-
                       </div>
 
-                    )
 
+
+                    )
 
                     }
 
@@ -446,31 +442,49 @@ const ChatContent = ({ selectedUser, currentUser }) => {
 
             <MDBCardFooter className="text-muted d-flex justify-content-start align-items-center p-3" style={{ position: "relative", top: "auto" }}>
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                alt="avatar 3"
-                style={{ width: "45px", height: "88%" }}
+                src={currentUser?.profileImage}
+                alt={currentUser?.profileImage}
+                style={{ width: "45px", height: "88%", borderRadius: "50%" }}
               />
               <input
+              
                 type="text"
                 class="form-control form-control-lg"
                 id="exampleFormControlInput1"
                 placeholder="Type message"
+                value={message}
                 onChange={(e) => setMessage(e.target.value)}
-              ></input>
+
+              />
+
               <a className="ms-1 text-muted" href="#!">
+
                 <MDBIcon fas icon="paperclip" />
+
               </a>
+
               <a className="ms-3 text-muted" href="#!">
+
                 <MDBIcon fas icon="smile" />
+
               </a>
+
               <a className="ms-3" href="#!">
+
                 <MDBIcon fas icon="paper-plane" onClick={sendMessage} />
+
               </a>
+
             </MDBCardFooter>
+
           </MDBCard>
+
         </MDBCol>
+
       </MDBRow>
+
     </MDBContainer>
+
   );
 }
 

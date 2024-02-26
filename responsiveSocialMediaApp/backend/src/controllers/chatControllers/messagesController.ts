@@ -4,7 +4,7 @@ import MessagesModel from '../../models/realTimeChatModels/messagesModel';
 
 export const addMessage = async (req: Request, res: Response): Promise<void> => {
 
-    console.log(req.body.msgdata)
+
     try {
         const { chatRoomId, senderId, text } = req.body.msgdata;
         const message = new MessagesModel({
